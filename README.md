@@ -35,18 +35,18 @@ Some screenshot of Healing Application:
 
 - Muhammad Irham Dinan
 
-[![website](./img/linkedin-light.svg)](https://www.linkedin.com/in/dinanirham/)
+[![website](./image/linkedin.png)](https://www.linkedin.com/in/dinanirham/)
 &nbsp;&nbsp;
-[![website](./img/github-light.svg)](github.com/dinanirham)
+[![website](./image/github.png)](github.com/dinanirham)
 
 - Malvin Subahri
 
-[![website](./img/linkedin-light.svg)](www.linkedin.com/in/malvinsubahri/)
+[![website](./image/linkedin.png)](www.linkedin.com/in/malvinsubahri/)
 &nbsp;&nbsp;
-[![website](./img/github-light.svg)](https://github.com/Malvinsubahri)
+[![website](./image/github.png)](https://github.com/Malvinsubahri)
 
 - Gusti Ayu Dewi Puspa Kartikasari
 
-[![website](./img/linkedin-light.svg)](https://www.linkedin.com/in/gusti-ayu-dewi-puspa-k/)
+[![website](./image/linkedin.png)](https://www.linkedin.com/in/gusti-ayu-dewi-puspa-k/)
 &nbsp;&nbsp;
-[![website](./img/github-light.svg)](https://github.com/DepusBuana)
+[![website](./image/github.png)](https://github.com/DepusBuana)
