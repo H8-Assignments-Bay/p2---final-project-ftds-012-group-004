@@ -26,8 +26,11 @@ Some screenshot of Healing Application:
 ![image](./image/Section4.png)
 
 **Preview App**
+input personal information & hobbies
 ![image](./image/demo_pt1.gif)
+select place & additional information
 ![image](./image/demo_pt2.gif)
+and done
 ![image](./image/demo_pt3.gif)
 
 **Interactive Map**
@@ -46,7 +49,7 @@ Some screenshot of Healing Application:
 
 - Malvin Subahri
 
-[Linkedin](www.linkedin.com/in/malvinsubahri/)
+[Linkedin](https://www.linkedin.com/in/malvinsubahri/)
 &nbsp;&nbsp;
 [Github](https://github.com/Malvinsubahri)
 
