@@ -13,8 +13,8 @@ Healing Project adalah sebuah sistem rekomendasi  khususnya untuk daerah Jakarta
 
 We deploy the application through Heroku, and please don't hesitate to try the application and give us your feedback!
 
-- [Heroku] (https://healing-fp-ftds12-g4.herokuapp.com/)
-- [Feedback] (https://forms.gle/KTWkL3hft8odWD3i9)
+- [Heroku](https://healing-fp-ftds12-g4.herokuapp.com/)
+- [Feedback](https://forms.gle/KTWkL3hft8odWD3i9)
 
 Some screenshot of Healing Application:
 
@@ -25,13 +25,13 @@ Some screenshot of Healing Application:
 ![image](./image/Section3.png)
 ![image](./image/Section4.png)
 
-**Preview App**
-input personal information & hobbies
+<!-- **Preview App** -->
+<!-- input personal information & hobbies
 ![image](./image/demo_pt1.gif)
 select place & additional information
 ![image](./image/demo_pt2.gif)
 and done
-![image](./image/demo_pt3.gif)
+![image](./image/demo_pt3.gif) -->
 
 **Interactive Map**
 
