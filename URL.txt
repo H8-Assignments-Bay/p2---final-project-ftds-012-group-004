@@ -1,0 +1,2 @@
+frontend = https://healing-fp-ftds12-g4.herokuapp.com/
+backend = https://healing-fp-ftds-group004.herokuapp.com/
