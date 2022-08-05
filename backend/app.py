@@ -1,18 +1,11 @@
 from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
-import numpy as np
 
 app = Flask(__name__)
 
-# # label
-# LABEL = ["Basic", "Deluxe", "King"]
 
-# # pipeline
-# with open("pipeline_pre.pkl", "rb") as f1:
-#     pipeline = pickle.load(f1)
-
-# inisiasi open model
+# Open model initiation
 
 def open_model(model_path):
     """
@@ -22,7 +15,7 @@ def open_model(model_path):
         model = pickle.load(f)
     return model
 
-model_cluster = open_model("kmodes_4.pkl") # pandas dataframe
+model_cluster = open_model("kmodes_4.pkl") 
 
 def inference_cluster(data, model):
     """
@@ -37,16 +30,15 @@ def inference_cluster(data, model):
     res = model_cluster.predict(data)
     return res[0], label[res[0]]
 
-# model
-# with open("kmodes_4.pkl", "rb") as f2:
-#     model = pickle.load(f2)
 
-# home page
+# Homepage
+
 @app.route("/")
 def welcome():
     return "<h3>Selamat Datang di Healing Project</h3>"
 
-# predict page
+# Predict page
+
 @app.route("/predict", methods=["GET", "POST"])
 def predict_cluster():
     columns = ['Reading', 'Music', 'Cinema', 'Exhibition', 'Computer', 
@@ -76,42 +68,4 @@ def predict_cluster():
                        result=result)
     return response, 200
 
-    # if request.method == "POST":
-    #     content = request.json
-    #     try:
-    #         new_data = {'Reading': 'Reading',
-    #                     'Music': 'Music',
-    #                     'Cinema':'Cinema',
-    #                     'Exhibition': 'Exhibition',
-    #                     'Computer': 'Computer',
-    #                     'Sport': 'Sport',
-    #                     'Walking': 'Walking',
-    #                     'Travelling': 'Travelling',
-    #                     'Gardening':'Gardening',
-    #                     'Cooking': 'Cooking',
-    #                     'Fishing': 'Fishing',
-    #                     'Sex': 'Sex',
-    #                     'Age': 'Age',
-    #                     'MaritalStatus': 'MaritalStatus',
-    #                     'Profession': 'Profession'
-    #                     }
-
-    #         new_data = pd.DataFrame([new_data])
-    #         res = model.predict(new_data)
-
-    #         result = {'class':str(res[0])}
-
-    #         response = jsonify(success=True,
-    #                            result=result)
-
-
-            
-    #         return response, 200
-    #     except Exception as e:
-    #         response = jsonify(success=False,
-    #                            message=str(e))
-    #         return response, 400
-    # # return dari method get
-    # return "<p>Silahkan gunakan method POST untuk mode <em>inference model</em></p>"
-
-app.run(debug=True)
+# app.run(debug=True)

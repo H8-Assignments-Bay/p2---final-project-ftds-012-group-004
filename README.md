@@ -25,13 +25,14 @@ Some screenshot of Healing Application:
 ![image](./image/Section3.png)
 ![image](./image/Section4.png)
 
-<!-- **Preview App** -->
-<!-- input personal information & hobbies
-![image](./image/demo_pt1.gif)
-select place & additional information
-![image](./image/demo_pt2.gif)
-and done
-![image](./image/demo_pt3.gif) -->
+**Preview App**
+| --- |
+| Input personal information & hobbies |
+| ![image](./image/demo_pt1.gif) |
+| select place & additional information |
+| ![image](./image/demo_pt2.gif)) |
+| and done |
+| ![image](./image/demo_pt3.gif) |
 
 **Interactive Map**
 
@@ -58,3 +59,7 @@ and done
 [Linkedin](https://www.linkedin.com/in/gusti-ayu-dewi-puspa-k/)
 &nbsp;&nbsp;
 [Github](https://github.com/DepusBuana)
+
+**Credits to**
+
+[Travelry](https://github.com/nirwanar/final_project)
