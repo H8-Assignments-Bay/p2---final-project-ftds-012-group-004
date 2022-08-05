@@ -3,9 +3,7 @@ import requests
 import json
 from PIL import Image
 import pandas as pd
-import numpy as np
 import pydeck as pdk
-# from bokeh.models.widgets import Div
 
 st.set_page_config(layout="centered", page_icon="🙌", page_title="Healing - Go Heal Your Day")
 
@@ -28,7 +26,8 @@ set_bg_hack_url()
 image = Image.open('healing.png')
 st.image(image, use_column_width = True, caption='Lets go Healing!')
 
-# input user
+# User input
+
 st.header("Healing Person's Information")
 
 col1, col2 = st.columns(2)
@@ -40,7 +39,8 @@ with col2:
     marital_status = st.selectbox('Select your marital status',('Divorcee','Married','Single','Remarried','Widower'))
     profession_status = st.selectbox('Select your profession',('Management','Employee','Unskilled worker','Foreman','Manual labourer','Technician','Other'))
 
-# filter hotel
+# Hobbies selection
+
 st.subheader("Select your hobbies (You can select more than one)")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -64,27 +64,28 @@ hobby = [reading, music, cinema, exhibition, computer,sport, walking, traveling,
 gender_data = gender
 age_data = age
 status_data = [marital_status, profession_status]
-# akumulasi = sum(hasil)
+
 encode = []
 encode2 = []
 
-# for i in hasil:
-#     encode.append(i)
 
-#encode hobby
+# Encode hobby input for clustering
+
 for a in hobby:
     if a == True:
         encode.append(1)
     else :
         encode.append(0)
 
-#encode gender
+# Encode gender input for clustering
+
 if gender_data == 'Female':
     encode2.append('F')
 else:
     encode2.append('M')
 
-#encode age
+# Encode age input for clustering
+
 if age_data == '15-25':
     encode2.append('[15,25]')
 elif age_data == '25-35':
@@ -102,11 +103,13 @@ elif age_data == '75-85':
 else:
     encode2.append('(85,100]')    
 
-#encode status (marital & profession)
+# Encode marital status & profession input for clustering
+
 for y in status_data:
     encode2.append(y)
 
-# Inference Set
+# Collect all input for inferential
+
 inf_data = {'Reading': encode[0],
         'Music': encode[1],
         'Cinema':encode[2],
@@ -124,81 +127,40 @@ inf_data = {'Reading': encode[0],
         'Profession': encode2[3]
         }
 
-# st.write(encode)
-# st.write(encode2)
+# Access URL in backend
 
-
-# URL backend
-URL = "http://127.0.0.1:5000/predict"    
+URL = "https://healing-fp-ftds-group004.herokuapp.com/predict"    
 r = requests.post(URL,json=inf_data)
 res = r.json()
 result = res['result']
-# st.write(result)
+
          
 if result == '0':
     st.subheader(f"Select designated healing place")
     selection = st.radio("Please select your favorite one",
      ('Beach', 'Cafe', 'Dance Club', 'Park', 'Restaurant', 
      'View Point Restaurant', 'Bookstore', 'Zoo'))
-    # beach = st.checkbox('Beach')
-    # cafe = st.checkbox('Cafe')
-    # dance_club = st.checkbox('Dance Club')
-    # park = st.checkbox('Park')
-    # restaurant = st.checkbox('Restaurant')
-    # vp_resto = st.checkbox('View Point Restaurant')
-    # bookstore = st.checkbox('Bookstore')
-    # zoo = st.checkbox('Zoo')  
+ 
 elif result == '1':
     st.subheader(f"Select designated healing place")
     selection = st.radio("Please select your favorite one",
      ('Art Gallery', 'Beach', 'Cafe', 'Dance Club', 'Hotel',
       'Shopping Mall', 'Museum', 'Park', 'Library', 'Theatre', 'Bookstore'))
-    # art = st.checkbox('Art Gallery')
-    # beach = st.checkbox('Beach')
-    # cafe = st.checkbox('Cafe')
-    # dance_club = st.checkbox('Dance Club')
-    # hotel = st.checkbox('Hotel')
-    # mall = st.checkbox('Shopping Mall')
-    # museum = st.checkbox('Museum')
-    # park = st.checkbox('Park')
-    # library = st.checkbox('Library')
-    # theatre = st.checkbox('Theatre')
-    # bookstore = st.checkbox('Bookstore')
+
 elif result == '2':
     st.subheader(f"Select designated healing place")
     selection = st.radio("Please select your favorite one",
      ('Art Gallery', 'Beach', 'Cafe', 'Dance Club', 'Hotel', 'Museum',
      'Park', 'Restaurant', 'View Point Restaurant', 'Bookstore', 'Zoo'))
-    # art = st.checkbox('Art Gallery')
-    # beach = st.checkbox('Beach')
-    # cafe = st.checkbox('Cafe')
-    # dance_club = st.checkbox('Dance Club')
-    # hotel = st.checkbox('Hotel')
-    # museum = st.checkbox('Museum')
-    # park = st.checkbox('Park')
-    # restaurant = st.checkbox('Restaurant')
-    # vp_resto = st.checkbox('View Point Restaurant')
-    # bookstore = st.checkbox('Bookstore')
-    # zoo = st.checkbox('Zoo')
+
 else:
     st.subheader(f"Select designated healing place")
     selection = st.radio("Please select your favorite one",
      ('Art Gallery', 'Beach', 'Cafe', 'Hotel', 'Local Attraction',
       'Shopping Mall', 'Monument', 'Museum', 'Restaurant', 'Library', 'Theatre', 'Bookstore'))
-    # art = st.checkbox('Art Gallery')
-    # beach = st.checkbox('Beach')
-    # cafe = st.checkbox('Cafe')
-    # hotel = st.checkbox('Hotel')
-    # local = st.checkbox('Local Attraction')
-    # mall = st.checkbox('Shopping Mall')
-    # monument = st.checkbox('Monument')
-    # museum = st.checkbox('Museum')
-    # restaurant = st.checkbox('Restaurant')
-    # library = st.checkbox('Library')
-    # theatre = st.checkbox('Theatre')
-    # bookstore = st.checkbox('Bookstore')
 
-#gimmick filtering
+
+# Gimmick filtering
 
 st.subheader("Additional Information")
 rating_filter = st.selectbox('Select your stress level',('Low','Middle','High'))
@@ -207,12 +169,10 @@ popularity_filter = st.selectbox('Select place popularity level',('Low','Middle'
 if st.button(label='Submit'):
     st.header(f"Recommended places for your healing are....")
     data_scrapping = pd.read_excel('ScrappingFinal.xlsx')
-    # st.write(selection)
 
-#    rating_filter = st.selectbox('Select your stress level',('Low','Middle','High'))
-#     popularity_filter = st.selectbox('Select palace popularity level',('Low','Middle','High'))
 
-# logic recommendation
+# Recommendation mapping
+
     if selection == 'Art Gallery':
         location = 'Art gallery'
     elif selection == 'Beach':
@@ -262,8 +222,7 @@ if st.button(label='Submit'):
     elif rating_filter == 'High':
         data = datapop[(datapop['avg_rating'] > 4.6)]
 
-    # st.write(data)
-
+    
     layer1 = pdk.Layer(
             "ScatterplotLayer",
             data = data,
@@ -278,10 +237,10 @@ if st.button(label='Submit'):
             get_fill_color=[0,0,255]
     )
 
-    # Set the viewport location
+    # Setting up for map visualization
+    
     view_state = pdk.ViewState(latitude=-6.1809851330724985, longitude=106.8286844119248, zoom=10.5)
 
-    # Render
     st.pydeck_chart(pdk.Deck(layers=[layer1], initial_view_state=view_state, 
                             tooltip={"text": "{name} \nAddress: {address} \nRating: {avg_rating}"},
                             map_style='mapbox://styles/mapbox/navigation-day-v1'))
@@ -296,7 +255,8 @@ if st.button(label='Submit'):
         n = 0
         st.write('Sorry there is no recomendation for your preferences input :(')
 
-    # show image hotel
+  # Healing place recommendation and filtering
+
     st.subheader("Place Recommendation")
     show_rec = data.sort_values('avg_rating', ascending = False).head(n)
     show_rec = show_rec.reset_index(drop = True)    
@@ -337,6 +297,7 @@ if st.button(label='Submit'):
             st.markdown(show_rec['address'][2])
             st.write(show_rec['avg_rating'][2])
 
+# Access link for feedback
 
 st.subheader("Help us with your rating:")
 
